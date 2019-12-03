@@ -2,7 +2,7 @@
 let username = '';
 
 window.addEventListener('load', (event) => {
-    // username = prompt("Welcome to Fun Bus! What's your name?");
+    username = prompt("Welcome to Fun Bus! What's your name?");
     if (username == null || username == "") {
         txt = "Uh oh! No name was entered! Your new name is Human.";
         username = 'Human';
@@ -65,24 +65,12 @@ babyBus.style.margin = '-50% 10px 1%';
 
 header.appendChild(babyBus);
 
+let accumulate = 0;
+
 function drive (event) {
     event.preventDefault();
-    babyBus.style.transform =  'translateX(10%)';
+    accumulate = accumulate + 20;
+    babyBus.style.transform =  `translateX(${accumulate}%)`;
 }
 
-window.addEventListener('scroll', drive);
-
-/*
-let newNav1 = document.createElement('a');
-let newNav2 = document.createElement('a');
-
-newNav1.textContent = "Links";
-newNav1.style.color = 'green';
-newNav2.textContent = "Home";
-newNav2.style.color = 'green';
-
-let parentElement = document.querySelector('nav');
-
-parentElement.appendChild(newNav1);
-parentElement.prepend(newNav2);
-*/
+window.addEventListener('wheel', drive);
