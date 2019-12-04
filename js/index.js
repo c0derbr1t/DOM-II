@@ -18,19 +18,32 @@ const logo = document.querySelector('.logo-heading');
 const navs = document.querySelectorAll('.nav-link');
 
 // add an alert for clicking on each link
-navs[1].addEventListener('click', () => {
+navs[0].addEventListener('click', (event) => {
+    txt = `Well, ${username}, you broke it...Nah, just kidding. This link doesn't currently go anywhere!`;
+    alert(txt);
+
+    event.preventDefault();
+})
+
+navs[1].addEventListener('click', (event) => {
     txt = `Hey, ${username}, our About Us page is currently under construction. Feel free to explore the rest of our FUN site!`
     alert(txt);
+
+    event.preventDefault();
 })
 
-navs[2].addEventListener('click', () => {
+navs[2].addEventListener('click', (event) => {
     txt = `I'm sure you, ${username}, were excited to read about some great travels. However, our Blog is not ready for public consumption yet. You can travel through the rest of our page though!`
     alert(txt);
+
+    event.preventDefault();
 })
 
-navs[3].addEventListener('click', () => {
+navs[3].addEventListener('click', (event) => {
     txt = `Hi, ${username}! Thank you for your interest. The contact page will be updated soon! 😊`;
     alert(txt);
+
+    event.preventDefault();
 })
 
 // selects header
@@ -208,9 +221,96 @@ btn4.addEventListener('dblclick', () => {
 })
 
 
-/*
-navs.forEach((link) => {
-        link.style.fontWeight = 'bold';
-        link.style.transitionDelay = '0s';
+pictures.forEach(pic => {
+    pic.addEventListener('mousedown', () => {
+        pic.style.transform = 'scale(1.2)';
+        pic.style.borderRadius = '50px';
     })
-*/
+
+    pic.addEventListener('mouseup', () => {
+        pic.style.transform = 'scale(1)';
+    })
+})
+
+bottomBtns.forEach(btn => {
+    btn.addEventListener('mousedown', () => {
+        btn.style.transform = 'scale(1.2)';
+    })
+
+    btn.addEventListener('mouseup', () => {
+        btn.style.transform = 'scale(1)';
+    })
+})
+
+let dare = document.createElement('div');
+
+dare.textContent = "Right click me...I dare you! 😉"
+dare.style.width = '20%';
+dare.style.margin = '0 auto';
+dare.style.textAlign = 'center';
+dare.style.backgroundColor = 'black';
+dare.style.color = 'pink';
+dare.style.lineHeight = '2';
+dare.style.borderRadius = '40%';
+dare.style.fontSize = '1.2rem';
+
+body.prepend(dare);
+
+dare.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    alert('GASP! How could you?!?');
+})
+
+window.addEventListener('resize', () => {
+    babyBus.style.display = 'none';
+    alert(`Hey, ${username}! You made our tiny bus disappear!`);
+})
+
+let lastSection = document.querySelector('.content-pick');
+let dest = document.querySelectorAll('.destination');
+
+dest.forEach(box => {
+    box.addEventListener('mousedown', (event) => {
+        box.style.backgroundColor = 'teal';
+        event.stopPropagation()
+    })
+    
+    box.addEventListener('mouseup', (event) => {
+        box.style.backgroundColor = 'rgba(255,182,193,0)';
+        event.stopPropagation()
+    })
+})
+
+lastSection.addEventListener('mousedown', () => {
+    lastSection.style.backgroundColor = 'gold'; 
+})
+
+lastSection.addEventListener('mouseup', () => {
+    lastSection.style.backgroundColor = 'rgba(255,182,193,0)'; 
+})
+
+
+
+bottomBtns.forEach(btn => {
+    btn.addEventListener('mouseover', () => {
+        dest.forEach(box => {
+            box.style.backgroundColor = 'rgba(255,182,193,0.5)';
+        })
+    })
+
+    btn.addEventListener('mouseout', () => {
+        dest.forEach(box => {
+            box.style.backgroundColor = 'rgba(255,182,193,0)';
+        })
+    })
+})
+
+bottomBtns.forEach(btn => {
+    btn.addEventListener('mousedown', () => {
+        btn.style.transform = 'scale(1.2)';
+    })
+
+    btn.addEventListener('mouseup', () => {
+        btn.style.transform = 'scale(1)';
+    })
+})
